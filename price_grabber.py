@@ -30,11 +30,14 @@ class PriceGrabber(price_looker.PriceLooker):
                 url = 'https://www.amazon.com/' + tag_finder.get('href')
                 item_title = tag_finder.text.strip()
                 price = item.find('span', 'a-price').find('span', 'a-offscreen').text
+                item_rating = item.i.text
 
-                self.final_product_list[price] = [item_title, url]
+                self.final_product_list[price] = [item_title, url, item_rating]
 
             except AttributeError:
                 continue
 
-        return self.final_product_list
+
+        return {price: title for price, title in sorted(self.final_product_list.items(), key=lambda item: item[1][2], reverse=True)}
+
 
