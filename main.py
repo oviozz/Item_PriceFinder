@@ -8,7 +8,7 @@ def main():
 
 
     for key,value in item_grab.items():
-        price_checker.price_analyze(key, value[0], value[1])
+        price_checker.price_analyze(key, value[0], value[1], value[2])
 
     if price_checker.item_count_return() == 0:
         print(f'{60 * " "}NO ITEM FOUND')
