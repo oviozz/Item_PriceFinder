@@ -32,6 +32,9 @@ class PriceGrabber(price_looker.PriceLooker):
                 price = item.find('span', 'a-price').find('span', 'a-offscreen').text
                 item_rating = item.i.text
 
+                if len(item_rating) == 0:
+                    item_rating = 'No Item Rating'
+
                 self.final_product_list[price] = [item_title, url, item_rating]
 
             except AttributeError:
