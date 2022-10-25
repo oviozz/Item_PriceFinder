@@ -2,9 +2,9 @@ import price_grabber
 
 class PriceAnalyzer(price_grabber.PriceGrabber):
 
-    def price_analyze(self, price, title, url):
+    item_count = 0
 
-        self.item_count = 0
+    def price_analyze(self, price, title, url, item_count=None):
 
         if int(float(price.replace('$','').replace(',',''))) <= int(max(self._price_range)):
             print(f'| Product: {title}\n| Price: {price}\n| Product URL: {url}')
